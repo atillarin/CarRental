@@ -13,6 +13,6 @@ namespace DataAccess.Abstract
         T Get(Expression<Func<T,bool>>filter); //filter şart
         void Add(T entity);
         void Update(T entity);
-        void Delete(T entitt);
+        void Delete(T entity);
     }
 }
