@@ -19,12 +19,16 @@ namespace Business.Concrete
         public void Add(Brand brand)
         {
             if (brand.BrandName.Length >= 2)
+            {
                 _brandDal.Add(brand);
+                Console.WriteLine("Brand added." + brand.Id);
+            }
         }
 
         public void Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            Console.WriteLine("Brand deleted." + brand.Id);
         }
 
         public List<Brand> GetAll()
@@ -40,7 +44,10 @@ namespace Business.Concrete
         public void Update(Brand brand)
         {
             if (brand.BrandName.Length >= 2)
+            {
                 _brandDal.Update(brand);
+                Console.WriteLine("Brand updated." + brand.Id);
+            }
         }
     }
 }

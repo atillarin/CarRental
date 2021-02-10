@@ -17,14 +17,18 @@ namespace Business.Concrete
         }
 
         public void Add(Color color)
-        {            
-            if(color.ColorName.Length >2)
-            _colorDal.Add(color);
+        {
+            if (color.ColorName.Length > 2)
+            {
+                _colorDal.Add(color);
+                Console.WriteLine("Color added." + color.Id);
+            }
         }
 
         public void Delete(Color color)
         {
             _colorDal.Delete(color);
+            Console.WriteLine("Color deleted." + color.Id);
         }
 
         public List<Color> GetAll()
@@ -40,7 +44,10 @@ namespace Business.Concrete
         public void Update(Color color)
         {
             if (color.ColorName.Length > 2)
+            {
                 _colorDal.Update(color);
+                Console.WriteLine("Color updated." + color.Id);
+            }
         }
     }
 }

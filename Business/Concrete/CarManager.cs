@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Business.Concrete
             if (car.DailyPrice>0 )
             {
                 _carDal.Add(car);
-                Console.WriteLine("Car added.");
+                Console.WriteLine("Car added."+ car.Id);
             }else
             {
                 Console.WriteLine("Daily price must be more than 2 letters  ");
@@ -33,6 +34,8 @@ namespace Business.Concrete
         public void Delete(Car car)
         {
             _carDal.Delete(car);
+            Console.WriteLine("Car deleted." + car.Id);
+
         }
 
         public List<Car> GetAll()
@@ -40,19 +43,15 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetAllByBrandId(int brandId)
-        {
-            return _carDal.GetAll(c=>c.BrandId==brandId);
-        }
-
-        public List<Car> GetAllByColorId(int colorId)
-        {
-            return _carDal.GetAll(c => c.ColorId == colorId);
-        }
 
         public Car GetById(int id)
         {
             return _carDal.Get(c=>c.Id==id);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public void Update(Car car)
@@ -60,7 +59,7 @@ namespace Business.Concrete
             if (car.DailyPrice > 0)
             {
                 _carDal.Update(car);
-                Console.WriteLine("Car added.");
+                Console.WriteLine("Car updated." + car.Id);
             }
             else
             {
