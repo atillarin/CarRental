@@ -16,27 +16,30 @@ namespace ConsoleUI
 
 
 
-            foreach (var car in carManager.GetAll()) //tabloları join etmeden listeleme
+            foreach (var car in carManager.GetAll().Data) //tabloları join etmeden listeleme
             {
-                Console.WriteLine("Brand " + brandManager.GetById(car.BrandId).BrandName + " Color " + colorManager.GetById(car.ColorId).ColorName + " Daily Price " + car.DailyPrice);
+                Console.WriteLine("Brand " + (brandManager.GetById(car.BrandId).Data).BrandName + " Color " + (colorManager.GetById(car.ColorId).Data).ColorName + " Daily Price " + car.DailyPrice);
             }
 
 
             carManager.Add(new Car { Id=10, BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
             carManager.Update(new Car { Id = 10, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
-            carManager.Delete(carManager.GetById(10));
-            foreach (var car in carManager.GetAll())
+            carManager.Delete(carManager.GetById(10).Data);
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine("Car ID: "+car.Id + " Color: " + car.ColorId+ " Daily Price: " + car.DailyPrice+ " Description: " + car.Description);
             }
 
-            
+            var result = carManager.GetCarDetails();
 
-            foreach (var car in carManager.GetCarDetails()) //tabloları join ederek
+            if (result.Success==true)
             {
-                Console.WriteLine("Brand " + car.BrandName + " Color " + car.ColorName + " Daily Price " + car.DailyPrice);
+            
+                foreach (var car in result.Data) //tabloları join ederek
+                {
+                    Console.WriteLine("Brand " + car.BrandName + " Color " + car.ColorName + " Daily Price " + car.DailyPrice);
+                }
             }
-
 
 
         }
