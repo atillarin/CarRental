@@ -22,9 +22,13 @@ namespace ConsoleUI
             }
 
 
-            carManager.Add(new Car { Id=10, BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
-            carManager.Update(new Car { Id = 10, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
-            carManager.Delete(carManager.GetById(10).Data);
+            var resultAdd=carManager.Add(new Car { Id=10, BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
+            Console.WriteLine(resultAdd.Message);
+            var resultUpdate=carManager.Update(new Car { Id = 10, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
+            Console.WriteLine(resultUpdate.Message);
+            var resultDelete=carManager.Delete(carManager.GetById(10).Data);
+            Console.WriteLine(resultDelete.Message);
+
             foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine("Car ID: "+car.Id + " Color: " + car.ColorId+ " Daily Price: " + car.DailyPrice+ " Description: " + car.Description);
@@ -38,7 +42,9 @@ namespace ConsoleUI
                 foreach (var car in result.Data) //tabloları join ederek
                 {
                     Console.WriteLine("Brand " + car.BrandName + " Color " + car.ColorName + " Daily Price " + car.DailyPrice);
+                    
                 }
+                Console.WriteLine(result.Message);
             }
 
 
