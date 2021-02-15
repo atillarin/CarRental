@@ -22,11 +22,13 @@ namespace ConsoleUI
             }
 
 
-            var resultAdd=carManager.Add(new Car { Id=10, BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
+            var resultAdd=carManager.Add(new Car { BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
             Console.WriteLine(resultAdd.Message);
-            var resultUpdate=carManager.Update(new Car { Id = 10, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
+
+            var resultUpdate=carManager.Update(new Car {Id=14, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
             Console.WriteLine(resultUpdate.Message);
-            var resultDelete=carManager.Delete(carManager.GetById(10).Data);
+
+            var resultDelete=carManager.Delete(carManager.GetById(14).Data);
             Console.WriteLine(resultDelete.Message);
 
             foreach (var car in carManager.GetAll().Data)
