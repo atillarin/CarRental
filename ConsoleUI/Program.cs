@@ -16,40 +16,43 @@ namespace ConsoleUI
 
 
 
-            foreach (var car in carManager.GetAll().Data) //tabloları join etmeden listeleme
-            {
-                Console.WriteLine("Brand " + (brandManager.GetById(car.BrandId).Data).BrandName + " Color " + (colorManager.GetById(car.ColorId).Data).ColorName + " Daily Price " + car.DailyPrice);
-            }
+            //foreach (var car in carManager.GetAll().Data) //tabloları join etmeden listeleme
+            //{
+            //    Console.WriteLine("Brand " + (brandManager.GetById(car.BrandId).Data).BrandName + " Color " + (colorManager.GetById(car.ColorId).Data).ColorName + " Daily Price " + car.DailyPrice);
+            //}
 
 
-            var resultAdd=carManager.Add(new Car { BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
-            Console.WriteLine(resultAdd.Message);
+            //var resultAdd=carManager.Add(new Car { BrandId = 3,ColorId=3, DailyPrice = 500,ModelYear=2020,Description="4 X 5" });
+            //Console.WriteLine(resultAdd.Message);
 
-            var resultUpdate=carManager.Update(new Car {Id=14, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
-            Console.WriteLine(resultUpdate.Message);
+            //var resultUpdate=carManager.Update(new Car {Id=14, BrandId = 3, ColorId = 3, DailyPrice = 700, ModelYear = 2020, Description = "4 X 4" });
+            //Console.WriteLine(resultUpdate.Message);
 
-            var resultDelete=carManager.Delete(carManager.GetById(14).Data);
-            Console.WriteLine(resultDelete.Message);
+            //var resultDelete=carManager.Delete(carManager.GetById(14).Data);
+            //Console.WriteLine(resultDelete.Message);
 
-            foreach (var car in carManager.GetAll().Data)
-            {
-                Console.WriteLine("Car ID: "+car.Id + " Color: " + car.ColorId+ " Daily Price: " + car.DailyPrice+ " Description: " + car.Description);
-            }
+            //foreach (var car in carManager.GetAll().Data)
+            //{
+            //    Console.WriteLine("Car ID: "+car.Id + " Color: " + car.ColorId+ " Daily Price: " + car.DailyPrice+ " Description: " + car.Description);
+            //}
 
-            var result = carManager.GetCarDetails();
+            //var result = carManager.GetCarDetails();
 
-            if (result.Success==true)
-            {
+            //if (result.Success==true)
+            //{
             
-                foreach (var car in result.Data) //tabloları join ederek
-                {
-                    Console.WriteLine("Brand " + car.BrandName + " Color " + car.ColorName + " Daily Price " + car.DailyPrice);
+            //    foreach (var car in result.Data) //tabloları join ederek
+            //    {
+            //        Console.WriteLine("Brand " + car.BrandName + " Color " + car.ColorName + " Daily Price " + car.DailyPrice);
                     
-                }
-                Console.WriteLine(result.Message);
-            }
+            //    }
+            //    Console.WriteLine(result.Message);
+            //}
 
 
+            RentalManager rentalManager = new RentalManager(new EFRentDal());
+            var rentalResult=rentalManager.Add(new Rental {CarId=2  });
+            Console.WriteLine(rentalResult.Message);
         }
     }
 }
