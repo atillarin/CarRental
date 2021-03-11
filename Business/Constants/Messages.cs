@@ -13,6 +13,7 @@ namespace Business.Constants
         public static string DailyPriceInvalid = "Günlük fiyat geçersiz";
         public static string MaintenanceTime = "Sistem bakımda";
         public static string ProductListed = "Başarılı olarak listelendi";
-        public static string NotDelivered = "Araç teslim edilmediği için kiralama yapılamaz"; 
+        public static string NotDelivered = "Araç teslim edilmediği için kiralama yapılamaz";
+        internal static string LimitExceded="Limit aşıldı";
     }
 }
